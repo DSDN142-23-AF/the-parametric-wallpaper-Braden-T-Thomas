@@ -1,6 +1,7 @@
 //your parameter variables go here!
 let top_eyelid = 75 //Default Val = 75
 let bottom_eyelid = 125 //Default Val = 125
+let oval_eye = true //Default Val = false
 
 
 function setup_wallpaper(pWallpaper) {
@@ -31,7 +32,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   point(175, 100);
   */
 
-  //Top eyelid
+  if (!oval_eye){
+    //Top eyelid
   noFill();
   strokeWeight(1.5);
   beginShape();
@@ -50,4 +52,19 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   curveVertex(175, 100);
   curveVertex(175, 100);
   endShape();
+  }
+  else{
+    let c = color('#f1d027');
+    fill(c);
+    ellipse(100, 100, 100, 150);
+    strokeWeight(3);
+    ellipse(100, 100, 50, 75);
+    strokeWeight(7);
+    ellipse(100, 100, 35, 55);
+    strokeWeight(2);
+    ellipse(100, 100, 15, 20);
+    strokeWeight(3);
+    line(100, 102, 100, 98);
+  }
+
 }
