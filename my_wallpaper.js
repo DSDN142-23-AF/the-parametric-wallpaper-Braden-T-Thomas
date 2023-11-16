@@ -1,6 +1,6 @@
 //your parameter variables go here!
-let rect_width  = 20;
-let rect_height = 20;
+let top_eyelid = 75 //Default Val = 75
+let bottom_eyelid = 125 //Default Val = 125
 
 
 function setup_wallpaper(pWallpaper) {
@@ -15,9 +15,39 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background(240, 255, 240); //light honeydew green colour
+  //background(240, 255, 240); //light honeydew green colour
+  background(170);
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  rect(40 ,40, rect_width, rect_height);
+  strokeWeight(0.1);
+  line(0, 100, 200, 100);
+  line(100, 0, 100, 200);
+
+  /**Eye point guides
+  strokeWeight(3);
+  point(25, 100);
+  point(100, 75);
+  point(175, 100);
+  */
+
+  //Top eyelid
+  noFill();
+  strokeWeight(1.5);
+  beginShape();
+  curveVertex(25, 100);
+  curveVertex(25, 100);
+  curveVertex(100, top_eyelid);
+  curveVertex(175, 100);
+  curveVertex(175, 100);
+  endShape();
+
+  //Bottom eyelid
+  beginShape();
+  curveVertex(25, 100);
+  curveVertex(25, 100);
+  curveVertex(100, bottom_eyelid);
+  curveVertex(175, 100);
+  curveVertex(175, 100);
+  endShape();
 }
