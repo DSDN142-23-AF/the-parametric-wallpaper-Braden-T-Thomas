@@ -47,7 +47,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     
   }
   else{
-    let c = color('#f1d027');
+    let c = color("#f1d027");
     fill(c);
     ellipse(100, 100, 100, 150);
     strokeWeight(3);
@@ -63,6 +63,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
 }
 
 function normal_eye_draw(){
+  let c = color("#ffe7b6");
+  fill(c);
   // Main middle eye
   //Left eyelid
   strokeWeight(1.5);
@@ -73,6 +75,7 @@ function normal_eye_draw(){
   curveVertex(100, 100);
   curveVertex(100, 100);
   endShape();
+  
 
   //Right eyelid
   beginShape();
@@ -118,4 +121,10 @@ function normal_eye_draw(){
   curveVertex(left_eye_bottom, 85);
   curveVertex(left_eye_bottom, 85);
   endShape();
+
+  fill('#fd0302');
+  ellipse(100, 80, 15, 20);
+  ellipse(70, 75, 10, 15);
+  ellipse(130, 75, 10, 15);
+
 }
