@@ -8,13 +8,19 @@ let right_eye_top = 200 - left_eye_top
 let left_eye_bottom = 75 // Default val = 75
 let right_eye_bottom = 200 - left_eye_bottom
 
-let oval_eye = false //Default Val = false
+let oval_eye = true //Default Val = false
+
+let oval_eye_iris_y_shift = 0 // Default value = 0 (+ for down | - for up)
+
+
+
+let normal_eye_iris_colour = color('#fd0302');
 
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(false); //set this to false when you're ready to print
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
 
   //Grid settings
   pWallpaper.grid_settings.cell_width  = 200;
@@ -42,29 +48,20 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   */
 
   if (!oval_eye){
-    //Top eyelid
     normal_eye_draw();
     
   }
   else{
-    let c = color("#f1d027");
-    fill(c);
-    ellipse(100, 100, 100, 150);
-    strokeWeight(3);
-    ellipse(100, 100, 50, 75);
-    strokeWeight(7);
-    ellipse(100, 100, 35, 55);
-    strokeWeight(2);
-    ellipse(100, 100, 15, 20);
-    strokeWeight(3);
-    line(100, 102, 100, 98);
+
+    oval_eye_draw();
+  
   }
 
 }
 
 function normal_eye_draw(){
-  let c = color("#ffe7b6");
-  fill(c);
+  let normal_eye_colour = color("#ffe7b6");
+  fill(normal_eye_colour);
   // Main middle eye
   //Left eyelid
   strokeWeight(1.5);
@@ -122,9 +119,40 @@ function normal_eye_draw(){
   curveVertex(left_eye_bottom, 85);
   endShape();
 
-  fill('#fd0302');
+  let normal_eye_iris_colour = color('#fd0302');
+  fill(normal_eye_iris_colour);
   ellipse(100, 80, 15, 20);
   ellipse(70, 75, 10, 15);
   ellipse(130, 75, 10, 15);
+}
 
+function oval_eye_draw(){
+  let CENTRE_POINT = 100
+    let MIDDLE_EYE_Y = 50
+    let MIDDLE_EYE_WIDTH = 60
+    let MIDDLE_EYE_HEIGHT = MIDDLE_EYE_WIDTH * 1.5
+
+    let First_ring_width = MIDDLE_EYE_WIDTH * 0.5
+    let First_ring_height = MIDDLE_EYE_HEIGHT * 0.5
+    let First_ring_position_y = MIDDLE_EYE_Y + oval_eye_iris_y_shift
+
+    let Second_ring_width = First_ring_width - 15
+    let Second_ring_height = First_ring_height - 25
+    let Second_ring_posiiton_y = First_ring_position_y + oval_eye_iris_y_shift * 0.45
+
+    let Third_ring_width = Second_ring_width - 20
+    let Third_ring_height = Second_ring_height - 30
+    let Third_ring_position_y = Second_ring_posiiton_y + oval_eye_iris_y_shift * 0.1
+
+    let oval_eye_colour = color("#f1d027");
+    fill(oval_eye_colour);
+    ellipse(CENTRE_POINT, MIDDLE_EYE_Y, MIDDLE_EYE_WIDTH, MIDDLE_EYE_HEIGHT); 
+    strokeWeight(2);
+    ellipse(CENTRE_POINT, First_ring_position_y, First_ring_width, First_ring_height);
+    strokeWeight(4);
+    ellipse(CENTRE_POINT, Second_ring_posiiton_y, Second_ring_width, Second_ring_height);
+    strokeWeight(1);
+    ellipse(CENTRE_POINT, Third_ring_position_y, Third_ring_width, Third_ring_height);
+    strokeWeight(1);
+    line(CENTRE_POINT, Third_ring_position_y + 2, CENTRE_POINT, Third_ring_position_y - 2);
 }
