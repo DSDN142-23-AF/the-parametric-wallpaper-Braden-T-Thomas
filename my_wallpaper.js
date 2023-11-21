@@ -10,7 +10,7 @@ let right_eye_bottom = 200 - left_eye_bottom
 
 let oval_eye = true //Default Val = false
 
-let oval_eye_iris_y_shift = 0 // Default value = 0 (+ for down | - for up)
+let oval_eye_iris_y_shift = 15 // Default value = 0 (+ for down | - for up)
 
 
 
@@ -38,14 +38,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   line(0, 100, 200, 100);
   line(100, 0, 100, 200);
 
-  //Eye point guides
-  /**
-  strokeWeight(3);
-  point(165, 35);
-  point(125, 85);
-  point(155, 67);
-  point(135, 50);
-  */
+  lantern_draw();
 
   if (!oval_eye){
     normal_eye_draw();
@@ -128,31 +121,59 @@ function normal_eye_draw(){
 
 function oval_eye_draw(){
   let CENTRE_POINT = 100
-    let MIDDLE_EYE_Y = 50
-    let MIDDLE_EYE_WIDTH = 60
-    let MIDDLE_EYE_HEIGHT = MIDDLE_EYE_WIDTH * 1.5
+  let MIDDLE_EYE_Y = 50
+  let MIDDLE_EYE_WIDTH = 60
+  let MIDDLE_EYE_HEIGHT = MIDDLE_EYE_WIDTH * 1.5
 
-    let First_ring_width = MIDDLE_EYE_WIDTH * 0.5
-    let First_ring_height = MIDDLE_EYE_HEIGHT * 0.5
-    let First_ring_position_y = MIDDLE_EYE_Y + oval_eye_iris_y_shift
+  let First_ring_width = MIDDLE_EYE_WIDTH * 0.5
+  let First_ring_height = MIDDLE_EYE_HEIGHT * 0.5
+  let First_ring_position_y = MIDDLE_EYE_Y + oval_eye_iris_y_shift
 
-    let Second_ring_width = First_ring_width - 15
-    let Second_ring_height = First_ring_height - 25
-    let Second_ring_posiiton_y = First_ring_position_y + oval_eye_iris_y_shift * 0.45
+  let Second_ring_width = First_ring_width - 15
+  let Second_ring_height = First_ring_height - 25
+  let Second_ring_posiiton_y = First_ring_position_y + oval_eye_iris_y_shift * 0.45
 
-    let Third_ring_width = Second_ring_width - 20
-    let Third_ring_height = Second_ring_height - 30
-    let Third_ring_position_y = Second_ring_posiiton_y + oval_eye_iris_y_shift * 0.1
+  let Third_ring_width = Second_ring_width - 20
+  let Third_ring_height = Second_ring_height - 30
+  let Third_ring_position_y = Second_ring_posiiton_y + oval_eye_iris_y_shift * 0.1
 
-    let oval_eye_colour = color("#f1d027");
-    fill(oval_eye_colour);
-    ellipse(CENTRE_POINT, MIDDLE_EYE_Y, MIDDLE_EYE_WIDTH, MIDDLE_EYE_HEIGHT); 
-    strokeWeight(2);
-    ellipse(CENTRE_POINT, First_ring_position_y, First_ring_width, First_ring_height);
-    strokeWeight(4);
-    ellipse(CENTRE_POINT, Second_ring_posiiton_y, Second_ring_width, Second_ring_height);
-    strokeWeight(1);
-    ellipse(CENTRE_POINT, Third_ring_position_y, Third_ring_width, Third_ring_height);
-    strokeWeight(1);
-    line(CENTRE_POINT, Third_ring_position_y + 2, CENTRE_POINT, Third_ring_position_y - 2);
+  let oval_eye_colour = color("#f1d027");
+  fill(oval_eye_colour);
+  strokeWeight(0);
+  ellipse(CENTRE_POINT, MIDDLE_EYE_Y, MIDDLE_EYE_WIDTH, MIDDLE_EYE_HEIGHT); 
+  strokeWeight(2);
+  ellipse(CENTRE_POINT, First_ring_position_y, First_ring_width, First_ring_height);
+  strokeWeight(4);
+  ellipse(CENTRE_POINT, Second_ring_posiiton_y, Second_ring_width, Second_ring_height);
+  strokeWeight(1);
+  ellipse(CENTRE_POINT, Third_ring_position_y, Third_ring_width, Third_ring_height);
+  strokeWeight(1);
+  line(CENTRE_POINT, Third_ring_position_y + 2, CENTRE_POINT, Third_ring_position_y - 2);
+}
+
+function lantern_draw(){
+  fill("#000000");
+  rect(80, 165, 40, 2);
+
+  noFill();
+  strokeWeight(2);
+  beginShape();
+  curveVertex(81, 166); // Beginning
+  curveVertex(81, 166); // Beginning
+  curveVertex(83, 135);
+  curveVertex(100, 115); //Mid Point
+  curveVertex(117, 135)
+  curveVertex(119, 166); // End
+  curveVertex(119, 166); // End
+  endShape();
+
+  beginShape();
+  curveVertex(90, 166); // Beginning
+  curveVertex(90, 166); // Beginning
+  curveVertex(91, 135);
+  curveVertex(100, 115); //Mid Point
+  curveVertex(109, 135)
+  curveVertex(110, 166); // End
+  curveVertex(110, 166); // End
+  endShape();
 }
