@@ -1,20 +1,20 @@
 //your parameter variables go here!
 //Use to change how open / closed the eye is. Changing the left eyelid will change the right to be equal
-let left_eyelid = 85 // Default Val = 85
-let right_eyelid = 200 - left_eyelid
+let left_eyelid = 85; // Default Val = 85
+let right_eyelid = 200 - left_eyelid;
 
-let left_eye_top = 35 // Default val = 35
-let right_eye_top = 200 - left_eye_top
-let left_eye_bottom = 75 // Default val = 75
-let right_eye_bottom = 200 - left_eye_bottom
+let left_eye_top = 35; // Default val = 35
+let right_eye_top = 200 - left_eye_top;
+let left_eye_bottom = 75; // Default val = 75
+let right_eye_bottom = 200 - left_eye_bottom;
 
-let oval_eye = true //Default Val = false
+let oval_eye = true; //Default Val = false
 
-let oval_eye_iris_y_shift = 0 // Default value = 0 (+ for down | - for up) 20 & -20 Max val
+let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 & -20 Max val
 
 let normal_eye_iris_colour = color('#fd0302');
 
-let trumpet_warning = 2 //Takes values between 0 and 3
+let trumpet_warning = 2; //Takes values between 0 and 3
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -44,6 +44,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     lantern_draw();
     oval_eye_draw();
   }
+
+
 
   wraning_draw();
 
@@ -118,22 +120,22 @@ function normal_eye_draw(){
 }
 
 function oval_eye_draw(){
-  let CENTRE_POINT = 100
-  let MIDDLE_EYE_Y = 50
-  let MIDDLE_EYE_WIDTH = 60
-  let MIDDLE_EYE_HEIGHT = MIDDLE_EYE_WIDTH * 1.5
+  let CENTRE_POINT = 100;
+  let MIDDLE_EYE_Y = 50;
+  let MIDDLE_EYE_WIDTH = 60;
+  let MIDDLE_EYE_HEIGHT = MIDDLE_EYE_WIDTH * 1.5;
 
-  let First_ring_width = MIDDLE_EYE_WIDTH * 0.5
-  let First_ring_height = MIDDLE_EYE_HEIGHT * 0.5
-  let First_ring_position_y = MIDDLE_EYE_Y + oval_eye_iris_y_shift
+  let First_ring_width = MIDDLE_EYE_WIDTH * 0.5;
+  let First_ring_height = MIDDLE_EYE_HEIGHT * 0.5;
+  let First_ring_position_y = MIDDLE_EYE_Y + oval_eye_iris_y_shift;
 
-  let Second_ring_width = First_ring_width - 15
-  let Second_ring_height = First_ring_height - 25
-  let Second_ring_posiiton_y = First_ring_position_y + oval_eye_iris_y_shift * 0.45
+  let Second_ring_width = First_ring_width - 15;
+  let Second_ring_height = First_ring_height - 25;
+  let Second_ring_posiiton_y = First_ring_position_y + oval_eye_iris_y_shift * 0.45;
 
-  let Third_ring_width = Second_ring_width - 20
-  let Third_ring_height = Second_ring_height - 30
-  let Third_ring_position_y = Second_ring_posiiton_y + oval_eye_iris_y_shift * 0.1
+  let Third_ring_width = Second_ring_width - 20;
+  let Third_ring_height = Second_ring_height - 30;
+  let Third_ring_position_y = Second_ring_posiiton_y + oval_eye_iris_y_shift * 0.1;
 
   let oval_eye_colour = color("#f1d027");
   fill(oval_eye_colour);
@@ -160,7 +162,7 @@ function lantern_draw(){
   curveVertex(81, 166); // Beginning
   curveVertex(83, 135);
   curveVertex(100, 115); //Mid Point
-  curveVertex(117, 135)
+  curveVertex(117, 135);
   curveVertex(119, 166); // End
   curveVertex(119, 166); // End
   endShape();
@@ -170,7 +172,7 @@ function lantern_draw(){
   curveVertex(90, 166); // Beginning
   curveVertex(91, 135);
   curveVertex(100, 115); //Mid Point
-  curveVertex(109, 135)
+  curveVertex(109, 135);
   curveVertex(110, 166); // End
   curveVertex(110, 166); // End
   endShape();
@@ -186,7 +188,7 @@ function wraning_draw(){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5)
+      triangle(195, 5, 195, 45, 150, 5);
       break;
 
     case 2:
@@ -196,7 +198,7 @@ function wraning_draw(){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5)
+      triangle(195, 5, 195, 45, 150, 5);
       break;
   
     case 3:
@@ -206,7 +208,7 @@ function wraning_draw(){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5)
+      triangle(195, 5, 195, 45, 150, 5);
       break;
 
     default:
