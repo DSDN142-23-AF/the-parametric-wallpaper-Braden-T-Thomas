@@ -10,12 +10,11 @@ let right_eye_bottom = 200 - left_eye_bottom
 
 let oval_eye = true //Default Val = false
 
-let oval_eye_iris_y_shift = 15 // Default value = 0 (+ for down | - for up)
-
-
+let oval_eye_iris_y_shift = 0 // Default value = 0 (+ for down | - for up) 20 & -20 Max val
 
 let normal_eye_iris_colour = color('#fd0302');
 
+let trumpet_warning = 2 //Takes values between 0 and 3
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -38,23 +37,22 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   line(0, 100, 200, 100);
   line(100, 0, 100, 200);
 
-  lantern_draw();
-
   if (!oval_eye){
     normal_eye_draw();
-    
   }
   else{
-
+    lantern_draw();
     oval_eye_draw();
-  
   }
+
+  wraning_draw();
 
 }
 
 function normal_eye_draw(){
   let normal_eye_colour = color("#ffe7b6");
   fill(normal_eye_colour);
+  stroke("#000000");
   // Main middle eye
   //Left eyelid
   strokeWeight(1.5);
@@ -115,8 +113,8 @@ function normal_eye_draw(){
   let normal_eye_iris_colour = color('#fd0302');
   fill(normal_eye_iris_colour);
   ellipse(100, 80, 15, 20);
-  ellipse(70, 75, 10, 15);
-  ellipse(130, 75, 10, 15);
+  circle(69, 77, 8);
+  circle(131, 77, 8)
 }
 
 function oval_eye_draw(){
@@ -176,4 +174,42 @@ function lantern_draw(){
   curveVertex(110, 166); // End
   curveVertex(110, 166); // End
   endShape();
+}
+
+function wraning_draw(){
+  angleMode(DEGREES);
+  switch(trumpet_warning){
+    case 1:
+      stroke("#ffbd00");
+      fill("#332600");
+      strokeWeight(2);
+      triangle(5, 5, 5, 45, 45, 5);
+      triangle(5, 195, 5, 150, 45, 195);
+      triangle(195, 195, 195, 150, 150, 195);
+      triangle(195, 5, 195, 45, 150, 5)
+      break;
+
+    case 2:
+      stroke("#ff5100");
+      fill("#331000");
+      strokeWeight(2);
+      triangle(5, 5, 5, 45, 45, 5);
+      triangle(5, 195, 5, 150, 45, 195);
+      triangle(195, 195, 195, 150, 150, 195);
+      triangle(195, 5, 195, 45, 150, 5)
+      break;
+  
+    case 3:
+      stroke("#ff0000");
+      fill("#330000");
+      strokeWeight(2);
+      triangle(5, 5, 5, 45, 45, 5);
+      triangle(5, 195, 5, 150, 45, 195);
+      triangle(195, 195, 195, 150, 150, 195);
+      triangle(195, 5, 195, 45, 150, 5)
+      break;
+
+    default:
+      break;
+  }
 }
