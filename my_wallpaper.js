@@ -14,6 +14,9 @@ let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 &
 
 let normal_eye_iris_colour = color('#fd0302');
 
+
+
+
  //Takes values between 0 and 3
 
 function setup_wallpaper(pWallpaper) {
@@ -36,7 +39,12 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   strokeWeight(0.1);
   line(0, 100, 200, 100);
   line(100, 0, 100, 200);
-  
+
+  let text_type = 1
+  let text_sprawl_count = 5 // Default value = 5. Controls how many lines are on the screen.
+  let all_lines = true; // Default value = false
+  deranged_text(text_type, text_sprawl_count, all_lines);
+
   if (!oval_eye){
     normal_eye_draw();
   }
@@ -45,7 +53,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     oval_eye_draw();
   }
   
-  let trumpet_warning = 0; // Takes values between 0 and 3
+  let trumpet_warning = 3; // Takes values between 0 and 3
   wraning_draw(trumpet_warning);
 }
 
@@ -228,6 +236,72 @@ function wraning_draw(trumpet_warning){
       textAlign(CENTER, CENTER);
       text("THIRD TRUMPET", -10, 27, 22);
       break;
+
+    default:
+      break;
+  }
+}
+
+function deranged_text(text_type, text_sprawl_count, all_lines){
+  switch(text_type){
+    case 1:
+      var bird_lines = ["No one has to worry. You'll be safe as long as I'm here.", 
+      "Let's brighten the road ahead, so I can have a good view of the lives I must save.",
+      "If I kill them first… then no one would be killed by the beast!",
+      "I should do something for the safety of creatures in the forest.",
+      "I'll be sad if you got hurt. I'll protect you."];
+      textSize(6);
+      textAlign(CENTER, CENTER);
+      fill("#f1d027");
+      if (all_lines){
+        for (let i = 0; i <= text_sprawl_count; i++){
+          let random_line = Math.floor(Math.random() * 4);
+          let random_offset = Math.floor(Math.random * 10)
+          let random_x = Math.floor(Math.random() * 200);
+          let random_y = Math.floor(Math.random() * 200);
+          random_y + random_offset;
+          text(bird_lines[random_line], random_x, random_y);
+        }
+      }
+      else{
+        let random_line = Math.floor(Math.random() * 4);
+        for (let i = 0; i <= text_sprawl_count; i++){
+          let random_offset = Math.floor(Math.random * 10)
+          let random_x = Math.floor(Math.random() * 200);
+          let random_y = Math.floor(Math.random() * 200);
+          random_y + random_offset;
+          text(bird_lines[random_line], random_x, random_y);
+        }
+      }
+      break;
+
+    case 2:
+      var bud_lines = [];
+      textSize(6);
+      textAlign(CENTER, CENTER);
+      fill("#ffe7b6");
+      if (all_lines){
+        for (let i = 0; i <= text_sprawl_count; i++){
+          let random_line = Math.floor(Math.random() * 4);
+          let random_offset = Math.floor(Math.random * 10)
+          let random_x = Math.floor(Math.random() * 200);
+          let random_y = Math.floor(Math.random() * 200);
+          random_y + random_offset;
+          text(bud_lines[random_line], random_x, random_y);
+        }
+      }
+      else{
+        let random_line = Math.floor(Math.random() * 4);
+        for (let i = 0; i <= text_sprawl_count; i++){
+          let random_offset = Math.floor(Math.random * 10)
+          let random_x = Math.floor(Math.random() * 200);
+          let random_y = Math.floor(Math.random() * 200);
+          random_y + random_offset;
+          text(bud_lines[random_line], random_x, random_y);
+        }
+      }
+      break;
+
 
     default:
       break;
