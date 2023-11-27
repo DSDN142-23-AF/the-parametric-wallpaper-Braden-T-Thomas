@@ -45,8 +45,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     oval_eye_draw();
   }
   
-  let trumpet_warning = 0;
-
+  let trumpet_warning = 0; // Takes values between 0 and 3
   wraning_draw(trumpet_warning);
 }
 
@@ -187,7 +186,14 @@ function wraning_draw(trumpet_warning){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5)
+      triangle(195, 5, 195, 45, 150, 5);
+
+      fill("#ffbd00");
+      textSize(6);
+      strokeWeight(0.3);
+      rotate(-45);
+      textAlign(CENTER, CENTER);
+      text("FIRST TRUMPET", -10, 27, 22);
       break;
     case 2:
       stroke("#ff5100");
@@ -196,7 +202,14 @@ function wraning_draw(trumpet_warning){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5)
+      triangle(195, 5, 195, 45, 150, 5);
+
+      fill("#ff5100");
+      textSize(6);
+      strokeWeight(0.3);
+      rotate(-45);
+      textAlign(CENTER, CENTER);
+      text("SECOND TRUMPET", -10, 27, 22);
       break;
   
     case 3:
@@ -206,7 +219,14 @@ function wraning_draw(trumpet_warning){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5)
+      triangle(195, 5, 195, 45, 150, 5);
+
+      fill("#ff0000");
+      textSize(6);
+      strokeWeight(0.3);
+      rotate(-45);
+      textAlign(CENTER, CENTER);
+      text("THIRD TRUMPET", -10, 27, 22);
       break;
 
     default:
