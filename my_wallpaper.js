@@ -14,7 +14,7 @@ let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 &
 
 let normal_eye_iris_colour = color('#fd0302');
 
-let trumpet_warning = 2; //Takes values between 0 and 3
+ //Takes values between 0 and 3
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -36,7 +36,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   strokeWeight(0.1);
   line(0, 100, 200, 100);
   line(100, 0, 100, 200);
-
+  
   if (!oval_eye){
     normal_eye_draw();
   }
@@ -44,11 +44,10 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     lantern_draw();
     oval_eye_draw();
   }
+  
+  let trumpet_warning = 0;
 
-
-
-  wraning_draw();
-
+  wraning_draw(trumpet_warning);
 }
 
 function normal_eye_draw(){
@@ -178,7 +177,7 @@ function lantern_draw(){
   endShape();
 }
 
-function wraning_draw(){
+function wraning_draw(trumpet_warning){
   angleMode(DEGREES);
   switch(trumpet_warning){
     case 1:
@@ -188,9 +187,8 @@ function wraning_draw(){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5);
+      triangle(195, 5, 195, 45, 150, 5)
       break;
-
     case 2:
       stroke("#ff5100");
       fill("#331000");
@@ -198,7 +196,7 @@ function wraning_draw(){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5);
+      triangle(195, 5, 195, 45, 150, 5)
       break;
   
     case 3:
@@ -208,7 +206,7 @@ function wraning_draw(){
       triangle(5, 5, 5, 45, 45, 5);
       triangle(5, 195, 5, 150, 45, 195);
       triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5);
+      triangle(195, 5, 195, 45, 150, 5)
       break;
 
     default:
