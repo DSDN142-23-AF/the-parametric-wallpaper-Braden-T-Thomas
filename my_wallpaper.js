@@ -10,6 +10,7 @@ let right_eye_bottom = 200 - left_eye_bottom;
 
 let oval_eye = true; //Default Val = false
 
+// On second note just ignore this. It no longer works with the addition of the multiple eyes.
 let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 & -20 Max val
 
 let normal_eye_iris_colour = color('#fd0302');
@@ -27,7 +28,7 @@ function setup_wallpaper(pWallpaper) {
   //Grid settings
   pWallpaper.grid_settings.cell_width  = 200;
   pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset  = 50;
+  pWallpaper.grid_settings.row_offset  = 0;
 }
 
 function wallpaper_background() {
@@ -36,24 +37,28 @@ function wallpaper_background() {
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  strokeWeight(0.1);
-  line(0, 100, 200, 100);
-  line(100, 0, 100, 200);
 
-  let text_type = 1
+  let text_type = 1 // 0 for none, 1 for bird, 2 for bud.
   let text_sprawl_count = 5 // Default value = 5. Controls how many lines are on the screen.
   let all_lines = true; // Default value = false
-  deranged_text(text_type, text_sprawl_count, all_lines);
 
+
+  deranged_text(text_type, text_sprawl_count, all_lines, oval_eye);
   if (!oval_eye){
     normal_eye_draw();
   }
   else{
     lantern_draw();
-    oval_eye_draw();
+    oval_eye_draw(0, 0, -0);
+    oval_eye_draw(50, 45, -30);
+    oval_eye_draw(54, -16, -15);
+    oval_eye_draw(80, 23, -32);
+    oval_eye_draw(-80, 10, -35);
+    oval_eye_draw(-55, 40, -27);
+    oval_eye_draw(-50, -18, -20);
   }
-  
-  let trumpet_warning = 3; // Takes values between 0 and 3
+
+  let trumpet_warning = 0; // Takes values between 0 and 3
   wraning_draw(trumpet_warning);
 }
 
@@ -125,15 +130,15 @@ function normal_eye_draw(){
   circle(131, 77, 8)
 }
 
-function oval_eye_draw(){
-  let CENTRE_POINT = 100;
-  let MIDDLE_EYE_Y = 50;
-  let MIDDLE_EYE_WIDTH = 60;
-  let MIDDLE_EYE_HEIGHT = MIDDLE_EYE_WIDTH * 1.5;
+function oval_eye_draw(eye_x_offset, eye_y_offset, eye_width_offset){
+  let centre_point = 100 + eye_x_offset;
+  let middle_eye_y = 50 + eye_y_offset;
+  let middle_eye_width = 60 + eye_width_offset;
+  let middle_eye_height = middle_eye_width * 1.5;
 
-  let First_ring_width = MIDDLE_EYE_WIDTH * 0.5;
-  let First_ring_height = MIDDLE_EYE_HEIGHT * 0.5;
-  let First_ring_position_y = MIDDLE_EYE_Y + oval_eye_iris_y_shift;
+  let First_ring_width = middle_eye_width * 0.5;
+  let First_ring_height = middle_eye_height * 0.5;
+  let First_ring_position_y = middle_eye_y + oval_eye_iris_y_shift;
 
   let Second_ring_width = First_ring_width - 15;
   let Second_ring_height = First_ring_height - 25;
@@ -143,18 +148,18 @@ function oval_eye_draw(){
   let Third_ring_height = Second_ring_height - 30;
   let Third_ring_position_y = Second_ring_posiiton_y + oval_eye_iris_y_shift * 0.1;
 
-  let oval_eye_colour = color("#f1d027");
+  const oval_eye_colour = color("#f1d027");
   fill(oval_eye_colour);
   strokeWeight(0);
-  ellipse(CENTRE_POINT, MIDDLE_EYE_Y, MIDDLE_EYE_WIDTH, MIDDLE_EYE_HEIGHT); 
+  ellipse(centre_point, middle_eye_y, middle_eye_width, middle_eye_height); 
   strokeWeight(2);
-  ellipse(CENTRE_POINT, First_ring_position_y, First_ring_width, First_ring_height);
+  ellipse(centre_point, First_ring_position_y, First_ring_width, First_ring_height);
   strokeWeight(4);
-  ellipse(CENTRE_POINT, Second_ring_posiiton_y, Second_ring_width, Second_ring_height);
+  ellipse(centre_point, Second_ring_posiiton_y, Second_ring_width, Second_ring_height);
   strokeWeight(1);
-  ellipse(CENTRE_POINT, Third_ring_position_y, Third_ring_width, Third_ring_height);
+  ellipse(centre_point, Third_ring_position_y, Third_ring_width, Third_ring_height);
   strokeWeight(1);
-  line(CENTRE_POINT, Third_ring_position_y + 2, CENTRE_POINT, Third_ring_position_y - 2);
+  line(centre_point, Third_ring_position_y + 2, centre_point, Third_ring_position_y - 2);
 }
 
 function lantern_draw(){
@@ -242,7 +247,7 @@ function wraning_draw(trumpet_warning){
   }
 }
 
-function deranged_text(text_type, text_sprawl_count, all_lines){
+function deranged_text(text_type, text_sprawl_count, all_lines, oval_eye){
   switch(text_type){
     case 1:
       var bird_lines = ["No one has to worry. You'll be safe as long as I'm here.", 
@@ -252,56 +257,66 @@ function deranged_text(text_type, text_sprawl_count, all_lines){
       "I'll be sad if you got hurt. I'll protect you."];
       textSize(6);
       textAlign(CENTER, CENTER);
-      fill("#f1d027");
-      if (all_lines){
-        for (let i = 0; i <= text_sprawl_count; i++){
+      let bird_text_colour = color(241, 208, 39, 160);
+      fill(bird_text_colour);
+      if(oval_eye){
+        if (all_lines){
+          for (let i = 0; i <= text_sprawl_count; i++){
+            let random_line = Math.floor(Math.random() * 4);
+            let random_offset = Math.floor(Math.random * 10)
+            let random_x = Math.floor(Math.random() * 200);
+            let random_y = Math.floor(Math.random() * 200);
+            random_y + random_offset;
+            text(bird_lines[random_line], random_x, random_y);
+          }
+        }
+        else{
           let random_line = Math.floor(Math.random() * 4);
-          let random_offset = Math.floor(Math.random * 10)
-          let random_x = Math.floor(Math.random() * 200);
-          let random_y = Math.floor(Math.random() * 200);
-          random_y + random_offset;
-          text(bird_lines[random_line], random_x, random_y);
+          for (let i = 0; i <= text_sprawl_count; i++){
+            let random_offset = Math.floor(Math.random * 10)
+            let random_x = Math.floor(Math.random() * 200);
+            let random_y = Math.floor(Math.random() * 200);
+            random_y + random_offset;
+            text(bird_lines[random_line], random_x, random_y);
+          }
         }
       }
-      else{
-        let random_line = Math.floor(Math.random() * 4);
-        for (let i = 0; i <= text_sprawl_count; i++){
-          let random_offset = Math.floor(Math.random * 10)
-          let random_x = Math.floor(Math.random() * 200);
-          let random_y = Math.floor(Math.random() * 200);
-          random_y + random_offset;
-          text(bird_lines[random_line], random_x, random_y);
-        }
-      }
+      
       break;
 
     case 2:
-      var bud_lines = [];
+      var bud_lines = ["For my children to be fed… You will become their prized meal.",
+      "You lowly creature… You dare touch my children?!",
+      "Growing children are always hungry.",
+      "We never know when we'll find another prey… Let us preserve this one.",
+      "Go ahead, show that worthless courage you had when you robbed me of my children!"];
       textSize(6);
       textAlign(CENTER, CENTER);
-      fill("#ffe7b6");
-      if (all_lines){
-        for (let i = 0; i <= text_sprawl_count; i++){
-          let random_line = Math.floor(Math.random() * 4);
-          let random_offset = Math.floor(Math.random * 10)
-          let random_x = Math.floor(Math.random() * 200);
-          let random_y = Math.floor(Math.random() * 200);
-          random_y + random_offset;
-          text(bud_lines[random_line], random_x, random_y);
+      let bud_text_colour = color(253, 3, 2, 160)
+      fill(bud_text_colour);
+      if(!oval_eye){
+        if (all_lines){
+          for (let i = 0; i <= text_sprawl_count; i++){
+            let random_line = Math.floor(Math.random() * 4);
+            let random_offset = Math.floor(Math.random * 10)
+            let random_x = Math.floor(Math.random() * 200);
+            let random_y = Math.floor(Math.random() * 200);
+            random_y + random_offset;
+            text(bud_lines[random_line], random_x, random_y);
+          }
         }
-      }
-      else{
-        let random_line = Math.floor(Math.random() * 4);
-        for (let i = 0; i <= text_sprawl_count; i++){
-          let random_offset = Math.floor(Math.random * 10)
-          let random_x = Math.floor(Math.random() * 200);
-          let random_y = Math.floor(Math.random() * 200);
-          random_y + random_offset;
-          text(bud_lines[random_line], random_x, random_y);
+        else{
+          let random_line = Math.floor(Math.random() * 4);
+          for (let i = 0; i <= text_sprawl_count; i++){
+            let random_offset = Math.floor(Math.random * 10)
+            let random_x = Math.floor(Math.random() * 200);
+            let random_y = Math.floor(Math.random() * 200);
+            random_y + random_offset;
+            text(bud_lines[random_line], random_x, random_y);
+          }
         }
       }
       break;
-
 
     default:
       break;
