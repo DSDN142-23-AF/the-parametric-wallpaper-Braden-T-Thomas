@@ -8,7 +8,7 @@ let right_eye_top = 200 - left_eye_top;
 let left_eye_bottom = 75; // Default val = 75
 let right_eye_bottom = 200 - left_eye_bottom;
 
-let oval_eye = false; //Default Val = false
+let oval_eye = true; //Default Val = false
 
 // On second note just ignore this. It no longer works with the addition of the multiple eyes.
 let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 & -20 Max val
@@ -16,7 +16,7 @@ let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 &
 let normal_eye_iris_colour = color('#fd0302');
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(DEVELOP_GLYPH);
+  pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(NINE_LANDSCAPE);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
@@ -33,9 +33,9 @@ function wallpaper_background() {
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
 
-  let text_type = 0 // 0 for none, 1 for bird, 2 for bud.
+  let text_type = 1 // 0 for none, 1 for bird, 2 for bud.
   let text_sprawl_count = 5 // Default value = 5. Controls how many lines are on the screen.
-  let all_lines = false; // Default value = false
+  let all_lines = true; // Default value = false
   let light_shine_size = 50
 
   deranged_text(text_type, text_sprawl_count, all_lines, oval_eye);
