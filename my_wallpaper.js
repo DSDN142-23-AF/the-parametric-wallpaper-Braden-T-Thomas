@@ -8,26 +8,21 @@ let right_eye_top = 200 - left_eye_top;
 let left_eye_bottom = 75; // Default val = 75
 let right_eye_bottom = 200 - left_eye_bottom;
 
-let oval_eye = true; //Default Val = false
+let oval_eye = false; //Default Val = false
 
 // On second note just ignore this. It no longer works with the addition of the multiple eyes.
 let oval_eye_iris_y_shift = 0; // Default value = 0 (+ for down | - for up) 20 & -20 Max val
 
 let normal_eye_iris_colour = color('#fd0302');
 
-
-
-
- //Takes values between 0 and 3
-
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
-  pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true); //set this to false when you're ready to print
+  pWallpaper.resolution(NINE_LANDSCAPE);
+  pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
-  pWallpaper.grid_settings.cell_width  = 200;
-  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.cell_width  = 250;
+  pWallpaper.grid_settings.cell_height = 250;
   pWallpaper.grid_settings.row_offset  = 0;
 }
 
@@ -38,14 +33,19 @@ function wallpaper_background() {
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
 
-  let text_type = 1 // 0 for none, 1 for bird, 2 for bud.
+  let text_type = 0 // 0 for none, 1 for bird, 2 for bud.
   let text_sprawl_count = 5 // Default value = 5. Controls how many lines are on the screen.
-  let all_lines = true; // Default value = false
+  let all_lines = false; // Default value = false
   let light_shine_size = 50
 
-
   deranged_text(text_type, text_sprawl_count, all_lines, oval_eye);
+
+  translate(25, 25) // Deciding the canvas size was too small I made it 250 from 200
+  // this required me to change all the values for positioning. Instead of going through
+  // each and every one I just decided to use translate.
+
   if (!oval_eye){
+    cocoon_draw();
     normal_eye_draw();
   }
   else{
@@ -59,6 +59,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     oval_eye_draw(-50, -18, -20);
   }
 
+
+  translate(-25, -25); // To get it back to it's original position
   let trumpet_warning = 0; // Takes values between 0 and 3
   wraning_draw(trumpet_warning);
 }
@@ -228,6 +230,48 @@ function lantern_draw(light_shine_size){
   endShape();
 }
 
+function cocoon_draw(){
+  fill("#8c8893");
+  stroke("#8c8893");
+  
+  beginShape();
+  curveVertex(100, 166); // Beginning
+  curveVertex(100, 166); // Beginning
+  curveVertex(91, 160); // curve point 1
+  curveVertex(97, 115); // Midpoint 1
+  curveVertex(103, 115); //Mid Point 2
+  curveVertex(109, 160); // curve point 2
+  curveVertex(100, 166); // End
+  curveVertex(100, 166); // End
+  endShape();
+
+  ellipse(100, 172, 12, 16);
+
+  stroke("#48474e");
+  line(94, 132, 108, 143);
+  line(104, 123, 97, 124);
+  line(109, 154, 92, 143);
+  line(91, 163, 107, 139);
+  line(94, 171, 108, 159);
+  // Edge cover up outline
+  noFill();
+  stroke("#8c8893")
+  beginShape();
+  curveVertex(100, 166); // Beginning
+  curveVertex(100, 166); // Beginning
+  curveVertex(91, 160); // curve point 1
+  curveVertex(97, 115); // Midpoint 1
+  curveVertex(103, 115); //Mid Point 2
+  curveVertex(109, 160); // curve point 2
+  curveVertex(100, 166); // End
+  curveVertex(100, 166); // End
+  endShape();
+  
+  // Goes between head and body, with the outline it needs to be drawn over
+  stroke("#48474e");
+  line(94, 171, 108, 159);
+}
+
 function wraning_draw(trumpet_warning){
   angleMode(DEGREES);
   switch(trumpet_warning){
@@ -235,50 +279,50 @@ function wraning_draw(trumpet_warning){
       stroke("#ffbd00");
       fill("#332600");
       strokeWeight(2);
-      triangle(5, 5, 5, 45, 45, 5);
-      triangle(5, 195, 5, 150, 45, 195);
-      triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5);
+      triangle(5, 5, 5, 65, 65, 5); // Top left
+      triangle(5, 245, 5, 185, 65, 245); // Bottom left
+      triangle(245, 245, 245, 185, 185, 245); // Bottom right
+      triangle(245, 5, 245, 65, 185, 5); // Top right
 
       fill("#ffbd00");
-      textSize(6);
+      textSize(9);
       strokeWeight(0.3);
       rotate(-45);
       textAlign(CENTER, CENTER);
-      text("FIRST TRUMPET", -10, 27, 22);
+      text("FIRST TRUMPET", -10, 37, 22);
       break;
     case 2:
       stroke("#ff5100");
       fill("#331000");
       strokeWeight(2);
-      triangle(5, 5, 5, 45, 45, 5);
-      triangle(5, 195, 5, 150, 45, 195);
-      triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5);
+      triangle(5, 5, 5, 65, 65, 5); // Top left
+      triangle(5, 245, 5, 185, 65, 245); // Bottom left
+      triangle(245, 245, 245, 185, 185, 245); // Bottom right
+      triangle(245, 5, 245, 65, 185, 5); // Top right
 
       fill("#ff5100");
-      textSize(6);
+      textSize(9);
       strokeWeight(0.3);
       rotate(-45);
       textAlign(CENTER, CENTER);
-      text("SECOND TRUMPET", -10, 27, 22);
+      text("SECOND TRUMPET", -10, 37, 22);
       break;
   
     case 3:
       stroke("#ff0000");
       fill("#330000");
       strokeWeight(2);
-      triangle(5, 5, 5, 45, 45, 5);
-      triangle(5, 195, 5, 150, 45, 195);
-      triangle(195, 195, 195, 150, 150, 195);
-      triangle(195, 5, 195, 45, 150, 5);
+      triangle(5, 5, 5, 65, 65, 5); // Top left
+      triangle(5, 245, 5, 185, 65, 245); // Bottom left
+      triangle(245, 245, 245, 185, 185, 245); // Bottom right
+      triangle(245, 5, 245, 65, 185, 5); // Top right
 
       fill("#ff0000");
-      textSize(6);
+      textSize(9);
       strokeWeight(0.3);
       rotate(-45);
       textAlign(CENTER, CENTER);
-      text("THIRD TRUMPET", -10, 27, 22);
+      text("THIRD TRUMPET", -10, 37, 22);
       break;
 
     default:
@@ -303,8 +347,8 @@ function deranged_text(text_type, text_sprawl_count, all_lines, oval_eye){
           for (let i = 0; i <= text_sprawl_count; i++){
             let random_line = Math.floor(Math.random() * 4);
             let random_offset = Math.floor(Math.random * 10)
-            let random_x = Math.floor(Math.random() * 200);
-            let random_y = Math.floor(Math.random() * 200);
+            let random_x = Math.floor(Math.random() * 250);
+            let random_y = Math.floor(Math.random() * 250);
             random_y + random_offset;
             text(bird_lines[random_line], random_x, random_y);
           }
@@ -313,8 +357,8 @@ function deranged_text(text_type, text_sprawl_count, all_lines, oval_eye){
           let random_line = Math.floor(Math.random() * 4);
           for (let i = 0; i <= text_sprawl_count; i++){
             let random_offset = Math.floor(Math.random * 10)
-            let random_x = Math.floor(Math.random() * 200);
-            let random_y = Math.floor(Math.random() * 200);
+            let random_x = Math.floor(Math.random() * 250);
+            let random_y = Math.floor(Math.random() * 250);
             random_y + random_offset;
             text(bird_lines[random_line], random_x, random_y);
           }
@@ -338,8 +382,8 @@ function deranged_text(text_type, text_sprawl_count, all_lines, oval_eye){
           for (let i = 0; i <= text_sprawl_count; i++){
             let random_line = Math.floor(Math.random() * 4);
             let random_offset = Math.floor(Math.random * 10)
-            let random_x = Math.floor(Math.random() * 200);
-            let random_y = Math.floor(Math.random() * 200);
+            let random_x = Math.floor(Math.random() * 250);
+            let random_y = Math.floor(Math.random() * 250);
             random_y + random_offset;
             text(bud_lines[random_line], random_x, random_y);
           }
@@ -348,8 +392,8 @@ function deranged_text(text_type, text_sprawl_count, all_lines, oval_eye){
           let random_line = Math.floor(Math.random() * 4);
           for (let i = 0; i <= text_sprawl_count; i++){
             let random_offset = Math.floor(Math.random * 10)
-            let random_x = Math.floor(Math.random() * 200);
-            let random_y = Math.floor(Math.random() * 200);
+            let random_x = Math.floor(Math.random() * 250);
+            let random_y = Math.floor(Math.random() * 250);
             random_y + random_offset;
             text(bud_lines[random_line], random_x, random_y);
           }
