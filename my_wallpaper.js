@@ -33,7 +33,7 @@ function setup_wallpaper(pWallpaper) {
 
 function wallpaper_background() {
   //background(240, 255, 240); //light honeydew green colour
-  background(170);
+  background(30);
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
@@ -41,6 +41,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   let text_type = 1 // 0 for none, 1 for bird, 2 for bud.
   let text_sprawl_count = 5 // Default value = 5. Controls how many lines are on the screen.
   let all_lines = true; // Default value = false
+  let light_shine_size = 50
 
 
   deranged_text(text_type, text_sprawl_count, all_lines, oval_eye);
@@ -48,7 +49,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     normal_eye_draw();
   }
   else{
-    lantern_draw();
+    lantern_draw(light_shine_size);
     oval_eye_draw(0, 0, -0);
     oval_eye_draw(50, 45, -30);
     oval_eye_draw(54, -16, -15);
@@ -150,6 +151,7 @@ function oval_eye_draw(eye_x_offset, eye_y_offset, eye_width_offset){
 
   const oval_eye_colour = color("#f1d027");
   fill(oval_eye_colour);
+  stroke("#000000")
   strokeWeight(0);
   ellipse(centre_point, middle_eye_y, middle_eye_width, middle_eye_height); 
   strokeWeight(2);
@@ -162,18 +164,55 @@ function oval_eye_draw(eye_x_offset, eye_y_offset, eye_width_offset){
   line(centre_point, Third_ring_position_y + 2, centre_point, Third_ring_position_y - 2);
 }
 
-function lantern_draw(){
+function lantern_draw(light_shine_size){
+  ellipseMode(CENTER);
+  noStroke();
+  
+  fill(191, 170, 59, 150);
+  ellipse(100, 143, light_shine_size*1.5, light_shine_size*1.5);
+
+  fill(179, 171, 127, 150);
+  ellipse(100, 143, light_shine_size, light_shine_size);
+
+  // Outer flame
+  fill("#f1d027");
+  stroke("#f1d027");
+  beginShape();
+  curveVertex(100, 130); // Beginning
+  curveVertex(100, 130); // Beginning
+  curveVertex(95, 150); // curve point 1
+  curveVertex(100, 156); //Mid Point
+  curveVertex(105, 150); // curve point 2
+  curveVertex(100, 130); // End
+  curveVertex(100, 130); // End
+  endShape();
+
+  // Inner flame
+  fill("#eb8c23");
+  stroke("#eb8c23");
+  beginShape();
+  curveVertex(100, 137); // Beginning
+  curveVertex(100, 137); // Beginning
+  curveVertex(97, 150); // curve point 1
+  curveVertex(100, 155); //Mid Point
+  curveVertex(103, 150); // curve point 2
+  curveVertex(100, 137); // End
+  curveVertex(100, 137); // End
+  endShape();
+
   fill("#000000");
+  stroke("#000000");
   rect(80, 165, 40, 2);
 
+  // Lantern outline
   noFill();
   strokeWeight(2);
   beginShape();
   curveVertex(81, 166); // Beginning
   curveVertex(81, 166); // Beginning
-  curveVertex(83, 135);
+  curveVertex(83, 135); // curve point 1
   curveVertex(100, 115); //Mid Point
-  curveVertex(117, 135);
+  curveVertex(117, 135); // curve point 2
   curveVertex(119, 166); // End
   curveVertex(119, 166); // End
   endShape();
@@ -181,9 +220,9 @@ function lantern_draw(){
   beginShape();
   curveVertex(90, 166); // Beginning
   curveVertex(90, 166); // Beginning
-  curveVertex(91, 135);
+  curveVertex(91, 135); // curve point 1
   curveVertex(100, 115); //Mid Point
-  curveVertex(109, 135);
+  curveVertex(109, 135); // curve point 2
   curveVertex(110, 166); // End
   curveVertex(110, 166); // End
   endShape();
