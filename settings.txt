@@ -7,16 +7,7 @@ Your final settings.txt will look something like this when you are finished:
 
 /////////////////////////////////
 
-Wallpaper 1:
-
-//your parameter variables go here!
-let rect_width  = 20;
-let rect_height = 20;
-let paramter1 = 10;
-let paramter2 = true;
-let paramter3 = 50; 
-let paramter4 = 0; 
-let paramter5 = 60;
+General Wallpaper settings:
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
@@ -24,31 +15,112 @@ function setup_wallpaper(pWallpaper) {
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
-  pWallpaper.grid_settings.cell_width  = 100;
-  pWallpaper.grid_settings.cell_height = 100;
-  pWallpaper.grid_settings.row_offset  = 50;
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 0;
 }
 
 /////////////////////////////////
 
-Wallpaper 2:
+NOTE: Due to the nature of my code, several of my perameter variables are strewn throughout the code.
+I will put the line number of the perameter before the variable itself to highlight where it is in
+the code.
 
-//your parameter variables go here!
-let rect_width  = 10;
-let rect_height = 10;
-let paramter1 = 20;
-let paramter2 = false;
-let paramter3 = 50; 
-let paramter4 = 80; 
-let paramter5 = 30;
+Wallpaper - 1:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = true;
+36: text_type = 1
+37: text_sprawl_count = 7
+38: all_lines = false;
+39: light_shine_size = 25
+63: trumpet_warning = 2;
 
-function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(NINE_LANDSCAPE);
-  pWallpaper.show_guide(false); //set this to false when you're ready to print
+Wallpaper - 2:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = true;
+36: text_type = 1
+37: text_sprawl_count = 3
+38: all_lines = false;
+39: light_shine_size = 40
+63: trumpet_warning = 1;
 
-  //Grid settings
-  pWallpaper.grid_settings.cell_width  = 100;
-  pWallpaper.grid_settings.cell_height = 100;
-  pWallpaper.grid_settings.row_offset  = 0;
-}
+Wallpaper - 3:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = true;
+36: text_type = 1
+37: text_sprawl_count = 10
+38: all_lines = true;
+39: light_shine_size = 10
+63: trumpet_warning = 3;
+
+Wallpaper - 4:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = true;
+36: text_type = 0
+37: text_sprawl_count = 5
+38: all_lines = false;
+39: light_shine_size = 30
+63: trumpet_warning = 0;
+
+Wallpaper - 5:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = false;
+36: text_type = 0
+37: text_sprawl_count = 5
+38: all_lines = false;
+39: light_shine_size = 30
+63: trumpet_warning = 0;
+
+Wallpaper - 6:
+3: left_eyelid = 75;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = false;
+36: text_type = 2
+37: text_sprawl_count = 5
+38: all_lines = false;
+39: light_shine_size = 30
+63: trumpet_warning = 1;
+
+Wallpaper - 7:
+3: left_eyelid = 90;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = false;
+36: text_type = 2
+37: text_sprawl_count = 8
+38: all_lines = false;
+39: light_shine_size = 30
+63: trumpet_warning = 2;
+
+Wallpaper - 8:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = false;
+36: text_type = 2
+37: text_sprawl_count = 11
+38: all_lines = true;
+39: light_shine_size = 30
+63: trumpet_warning = 3;
+
+Wallpaper - 9 - Favorite:
+3: left_eyelid = 85;
+6: left_eye_top = 35;
+8: left_eye_bottom = 75;
+11: oval_eye = true;
+36: text_type = 1
+37: text_sprawl_count = 5
+38: all_lines = true;
+39: light_shine_size = 50
+63: trumpet_warning = 0;
